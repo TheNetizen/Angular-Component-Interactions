@@ -1,0 +1,28 @@
+<!-- split 2 way data binding -->
+<div>
+<input type="text" [ngModel]="userName" (ngModelChange)="greetHarshita($event)"/>
+<p>{{userName}}</p>
+</div>
+<!-- //viewChild -->
+<div>
+  <input #nameRef type="text" [(ngModel)]="name" />
+  <p>{{name}}</p>
+  </div>
+
+<h1>Parent Component</h1>
+<!-- @input and ref methods Parent to child  -->
+<app-component-a #child [loggedIn]="userLoggedIn"></app-component-a>
+{{child.name}}
+<button (click)="child.greetHarsh()">greet</button>
+
+
+<h1>Parent Component</h1>
+<!-- @output child to parent  -->
+<app-componentb (gevent)="greet($event)"></app-componentb>
+{{outputName}}
+
+<h1>Teacher</h1>
+<!--  Communication using Service -->
+<button (click)=greetStudent()>Greet Student</button>
+<button (click)=appreciateStudent()>Appreciate Student</button>
+<app-component-serv></app-component-serv>
